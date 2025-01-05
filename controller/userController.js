@@ -1,4 +1,4 @@
-import userModel from '../models/userModel.js';
+import userModel from '../models/userSchema.js';
 
 const userController = {};
 
@@ -16,8 +16,7 @@ userController.addUserInfo = async (req, res) => {
         if (user) res.status(201).json({ message: 'user created' });
         else res.status(400).json({ message: 'invalid user data received' });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error' });
+        res.status(500).json({ message:error});
     }
 };
 userController.isUsername = async (req, res) => {
@@ -49,8 +48,7 @@ userController.getUserProfile = async (req, res) => {
 
         res.status(200).json(userObject); //Send userObject instead of user
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error' });
+        res.status(500).json({ message: error });
     }
 };
 
