@@ -37,9 +37,9 @@ postController.getPost = async (req, res) => {
     try {
         const { community_id, type } = req.query;
         if (!community_id || !type) res.status(400).json({ message: 'parameters missing' });
-        const data = await postSchema.find({ _id: community_id }).lean().exec();
+        const data = await postSchema.find({ community: community_id }).lean().exec();
 
-        if (data) res.status(201).json({ message: 'post created' });
+        if (data) res.status(201).json(data);
         else res.status(400).json({ message: 'invalid user data received' });
     } catch (error) {
         res.status(500).json({ message: error });
