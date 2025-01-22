@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
 
+import mongoose from 'mongoose';
 const communitySchema = new mongoose.Schema({
     name: {
         type: String,
@@ -12,7 +12,7 @@ const communitySchema = new mongoose.Schema({
         trim: true
     },
     leader: {
-        type: mongoose.Schema.Types.ObjectId,
+        type:String,
         required: true,
         ref: 'User'
     },

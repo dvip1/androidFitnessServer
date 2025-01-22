@@ -4,10 +4,9 @@ const postController = {};
 
 postController.createPost = async (req, res) => {
     try {
-        const { title, content, user_id, community, tags, is_template } = req.body;
+        const { title, content, uid, community, tags, is_template, media} = req.body;
 
-        if (!title || !community || is_template === undefined || !user_id) {
-            console.log(title, content, user_id, community, tags, is_template);
+        if (!title || !community || is_template === undefined || !uid) {
             return res
                 .status(400)
                 .json({ message: 'Required parameters missing: title, community, is_template' });
@@ -16,10 +15,11 @@ postController.createPost = async (req, res) => {
         const post = await postSchema.create({
             title,
             body: content,
-            user_id,
+            uid,
             community,
             tags,
             is_template,
+            media
         });
 
         if (post) {
