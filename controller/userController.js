@@ -4,10 +4,13 @@ const userController = {};
 
 userController.addUserInfo = async (req, res) => {
     try {
+        console.log("-1");
         const email = req.body.email;
         const username = req.body.username;
-        const uid = req.bod.uid;
+        const uid = req.body.uid;
+        console.log("here 0");
         if (!uid || !username || !email) res.status(400).json({ message: 'parameters missing' });
+        console.log("here 1");
         const user = await userModel.create({
             username,
             email,

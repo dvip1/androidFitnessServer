@@ -26,16 +26,12 @@ communityController.createCommunity = async (req, res) => {
         });
 
         newCommunity.members.push(user._id);
-        await userModel.updateOne(
-            { uid: leader },
-            { $push: { communities: newCommunity._id } }
-        )
+        await userModel.updateOne({ uid: leader }, { $push: { communities: newCommunity._id } });
         await newCommunity.save();
 
         res.status(200).json({
             success: true,
-            message: "New community created",
-            community: newCommunity
+            message: newCommunity
         });
     } catch (error) {
         res.status(500).json({

@@ -4,7 +4,7 @@ const postController = {};
 
 postController.createPost = async (req, res) => {
     try {
-        const { title, content, uid, community, tags, is_template, media} = req.body;
+        const { title, content, uid, community, tags, is_template, media } = req.body;
 
         if (!title || !community || is_template === undefined || !uid) {
             return res
@@ -19,7 +19,7 @@ postController.createPost = async (req, res) => {
             community,
             tags,
             is_template,
-            media
+            media,
         });
 
         if (post) {
