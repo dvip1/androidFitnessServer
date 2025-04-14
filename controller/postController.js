@@ -28,8 +28,7 @@ postController.createPost = async (req, res) => {
             res.status(400).json({ message: 'Failed to create post' });
         }
     } catch (error) {
-        console.error('Error creating post:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({success:false, message: 'Internal server error', error });
     }
 };
 
